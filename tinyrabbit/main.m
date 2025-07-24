@@ -280,7 +280,7 @@ int main(int argc, const char * argv[]) {
             config[@"batteryCut"] = @0;
             config[@"volume"] = @(getSystemVolume());
             config[@"interval"] = @2;
-            config[@"audioManagement"] = @YES;
+            config[@"audioManagement"] = @NO;
             config[@"audioDevice"] = defaultAudioName;
             [config writeToFile:configPath atomically:YES];
         }
