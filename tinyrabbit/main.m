@@ -282,6 +282,8 @@ int main(int argc, const char * argv[]) {
             config[@"interval"] = @2;
             config[@"audioManagement"] = @NO;
             config[@"audioDevice"] = defaultAudioName;
+            config[@"warmDevice"] = @NO;
+            config[@"sideComputer"] = @"";
             [config writeToFile:configPath atomically:YES];
         }
         while (true) {
@@ -294,6 +296,11 @@ int main(int argc, const char * argv[]) {
                     printf("waking monitor\n");
                 } else if (!isMouseConnected() && isMonitorAwake) {
                     printf("mouse disconnected, turning off monitor\n");
+                    if ([config[@"warmDevice"] boolValue]) {
+                        NSString* wakeURL = [NSString stringWithFormat:@"http://%@:11812/wake", config[@"sideComputer"]];
+                        NSLog(@"Sending wake request to %@", wakeURL);
+                        [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:wakeURL]] resume];
+                    }
                     isMonitorAwake = NO;
                     system("pmset displaysleepnow");
                 }

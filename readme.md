@@ -4,7 +4,7 @@ tinyrabbit is a simple objective-c executable that was made to run in background
 - Turn off monitor when Mouse is disconnected<br/>
 - Wake monitor when Mouse is connected<br/>
 - Set battery shutdown percentage<br/>
-- (eqMac) auto-switch audio output (Mac Mini often swiches to built-in speakers) and restore its volume settins<br/>
+- (eqMac) auto-switch audio output (Mac Mini often swiches to built-in speakers) and restore its volume settings<br/>
 - Features can be enabled/disabled from a plist file<br/>
 
 Install executable as a launch daemon if you want the binary to be running when you reboot your computer<br/>
